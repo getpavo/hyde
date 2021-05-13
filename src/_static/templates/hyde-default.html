@@ -1,0 +1,62 @@
+<html>
+<head>
+    {% block head %}
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+        {% if page.title %}
+        {% if page.title.lower() == "home" %}
+        {{ site.title }} &middot; {{ site.tagline }}
+        {% elif 'full_title' in page %}
+        {{ page.full_title }}
+        {% else %}
+        {{ page.title }} &middot; {{ site.title }}
+        {% endif %}
+        {% else %}
+        Unnamed &middot; {{ site.title }}
+        {% endif %}
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/hyde.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<div class="sidebar">
+    <div class="sticky">
+        <header>
+            <h1>
+                <a href="/">{{ site.title }}</a>
+            </h1>
+            <p class="site-tagline">
+                {% if 'lead' in page %}
+                {{ page.lead }}
+                {% elif public != None and 'hyde' in public and 'lead' in public.hyde %}
+                {{ public.hyde.lead }}
+                {% else %}
+                {{ site.tagline }}
+                {% endif %}
+            </p>
+            <nav>
+                {% for page in site.pages %}
+                <a class="sidebar-nav-item" href="{{ page.link }}">{{ page.title }}</a>
+                {% endfor %}
+            </nav>
+        </header>
+        {% if public != None and 'hyde' in public and 'copyright' in public.hyde %}
+        &copy; {{ public.hyde.copyright }}
+        {% endif %}
+    </div>
+</div>
+<div class="content">
+    {% if 'type' in page and page.type == 'overview' %}
+    TODO: Blog overview
+    {% else %}
+    {{ content }}
+    {% endif %}
+</div>
+</body>
+</html>
