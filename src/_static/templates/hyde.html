@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     <title>
-        {% if page.title %}
-        {% if page.title.lower() == "home" %}
+        >> if page.title is defined
+        >> if page.title.lower() == "home":
         {{ site.title }} &middot; {{ site.tagline }}
-        {% elif 'full_title' in page %}
+        >> elif 'full_title' in page:
         {{ page.full_title }}
-        {% else %}
+        >> else:
         {{ page.title }} &middot; {{ site.title }}
-        {% endif %}
-        {% else %}
+        >> endif
+        >> else:
         Unnamed &middot; {{ site.title }}
-        {% endif %}
+        >> endif
     </title>
 
     <!-- CSS -->
@@ -32,31 +32,32 @@
                 <a href="/">{{ site.title }}</a>
             </h1>
             <p class="site-tagline">
-                {% if 'lead' in page %}
+                >> if 'lead' in page:
                 {{ page.lead }}
-                {% elif public != None and 'hyde' in public and 'lead' in public.hyde %}
+                >> elif public != None and 'hyde' in public and 'lead' in public.hyde:
                 {{ public.hyde.lead }}
-                {% else %}
+                >> else:
                 {{ site.tagline }}
-                {% endif %}
+                >> endif
             </p>
             <nav>
-                {% for page in site.pages %}
-                <a class="sidebar-nav-item" href="{{ page.link }}">{{ page.title }}</a>
-                {% endfor %}
+                >> for page in site.pages:
+                <a class="sidebar-nav-item" href="{{ page.slug }}">{{ page.title }}</a>
+                >> endfor
             </nav>
         </header>
-        {% if public != None and 'hyde' in public and 'copyright' in public.hyde %}
+        >> if public != None and 'hyde' in public and 'copyright' in public.hyde:
         &copy; {{ public.hyde.copyright }}
-        {% endif %}
+        >> endif
     </div>
 </div>
 <div class="content">
-    {% if 'type' in page and page.type == 'overview' %}
-    TODO: Blog overview
-    {% else %}
+    >> if page.title is defined and page.title.lower() == "home":
+    <h1> {{ site.posts[0].title }}</h1>
+    {{ site.posts[0].content }}
+    >> else:
     {{ content }}
-    {% endif %}
+    >> endif
 </div>
 </body>
 </html>
