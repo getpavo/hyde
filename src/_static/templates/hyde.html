@@ -1,27 +1,27 @@
 <html>
 <head>
     {% block head %}
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-    <title>
-        >> if page.title is defined
-        >> if page.title.lower() == "home":
-        {{ site.title }} &middot; {{ site.tagline }}
-        >> elif 'full_title' in page:
-        {{ page.full_title }}
-        >> else:
-        {{ page.title }} &middot; {{ site.title }}
-        >> endif
-        >> else:
-        Unnamed &middot; {{ site.title }}
-        >> endif
-    </title>
+        <title>
+            >> if page.title is defined
+                >> if page.title.lower() == "home":
+                    {{ site.title }} &middot; {{ site.tagline }}
+                >> elif 'full_title' in page:
+                    {{ page.full_title }}
+                >> else:
+                    {{ page.title }} &middot; {{ site.title }}
+                >> endif
+            >> else:
+                Unnamed &middot; {{ site.title }}
+            >> endif
+        </title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../styles/hyde.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" href="../styles/hyde.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Prata&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     {% endblock %}
 </head>
 <body>
@@ -33,30 +33,30 @@
             </h1>
             <p class="site-tagline">
                 >> if 'lead' in page:
-                {{ page.lead }}
+                    {{ page.lead }}
                 >> elif public != None and 'hyde' in public and 'lead' in public.hyde:
-                {{ public.hyde.lead }}
+                    {{ public.hyde.lead }}
                 >> else:
-                {{ site.tagline }}
+                    {{ site.tagline }}
                 >> endif
             </p>
             <nav>
                 >> for page in site.pages:
-                <a class="sidebar-nav-item" href="{{ page.slug }}">{{ page.title }}</a>
+                    <a class="sidebar-nav-item" href="{{ page.slug }}">{{ page.title }}</a>
                 >> endfor
             </nav>
         </header>
         >> if public != None and 'hyde' in public and 'copyright' in public.hyde:
-        &copy; {{ public.hyde.copyright }}
+            &copy; {{ public.hyde.copyright }}
         >> endif
     </div>
 </div>
 <div class="content">
     >> if page.title is defined and page.title.lower() == "home":
-    <h1> {{ site.posts[0].title }}</h1>
-    {{ site.posts[0].content }}
+        <h1> {{ site.posts[0].title }}</h1>
+        {{ site.posts[0].content }}
     >> else:
-    {{ content }}
+        {{ content }}
     >> endif
 </div>
 </body>
