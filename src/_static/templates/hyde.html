@@ -34,8 +34,8 @@
             <p class="site-tagline">
                 >> if 'lead' in page:
                     {{ page.lead }}
-                >> elif public != None and 'hyde' in public and 'lead' in public.hyde:
-                    {{ public.hyde.lead }}
+                >> elif 'hyde' in data and 'lead' in data.hyde:
+                    {{ data.hyde.lead }}
                 >> else:
                     {{ site.tagline }}
                 >> endif
@@ -46,8 +46,10 @@
                 >> endfor
             </nav>
         </header>
-        >> if public != None and 'hyde' in public and 'copyright' in public.hyde:
-            &copy; {{ public.hyde.copyright }}
+        >> if 'hyde' in data and 'copyright' in data.hyde:
+            <div class="copyright">
+                &copy; {{ data.hyde.copyright }}
+            </div>
         >> endif
     </div>
 </div>
