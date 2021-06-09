@@ -14,6 +14,8 @@ Based on the amazing Hyde for Jekyll by @mdo: https://github.com/poole/hyde
 
 Run this file from your Jackman project to import Hyde automatically.
 
+TODO: Fix overwriting issues with this setup.
+
 (c) 2021 - Job Veldhuis and Hyde collaborators
 """
 
