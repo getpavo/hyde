@@ -12,7 +12,7 @@
 
 Based on the amazing Hyde for Jekyll by @mdo: https://github.com/poole/hyde
 
-Run this file from your Pova project to import Hyde automatically.
+Run this file from your Pavo project to import Hyde automatically.
 
 TODO: Fix overwriting issues with this setup.
 
@@ -28,7 +28,7 @@ import re
 hyde = str(pathlib.Path(__file__).parent.absolute()) + '/src/'
 target = str(pathlib.Path().absolute())
 
-if not os.path.isfile(f'{target}/.povaconfig'):
+if not os.path.isfile(f'{target}/.pavoconfig'):
     raise ImportError('Could not import templates into target: not a project.')
 
 failed_files = []
